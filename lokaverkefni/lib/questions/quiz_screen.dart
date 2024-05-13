@@ -13,7 +13,7 @@ class _QuizScreenState extends State<QuizScreen> {
   late String _currentQuestionSound;
 
   // Define quiz data with questions, options, correct answers, and sound file paths
-  List<Map<String, dynamic>> _quizData = [
+  final List<Map<String, dynamic>> _quizData = [
     {
       'question': 'Hvaða tónbil er þetta?',
       'options': ['hrein fimmund', 'hrein ferund', 'lítil tvíund', 'stór tvíund'],
