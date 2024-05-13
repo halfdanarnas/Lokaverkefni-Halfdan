@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lokaverkefni/questions/quiz_screen.dart';
+import 'package:lokaverkefni/main.dart';
+
 
 void main() {
   runApp(MyApp());

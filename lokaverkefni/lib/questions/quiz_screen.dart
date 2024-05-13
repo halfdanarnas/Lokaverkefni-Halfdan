@@ -8,7 +8,7 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  late String _selectedAnswer;
+  String _selectedAnswer = ''; // Initialize here instead of using 'late'
   late AudioPlayer _audioPlayer;
   late String _currentQuestionSound;
 
@@ -53,7 +53,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Text('Show Question'),
             ),
             // Display selected answer
-            if (_selectedAnswer != null) Text('Selected Answer: $_selectedAnswer'),
+            if (_selectedAnswer.isNotEmpty) Text('Selected Answer: $_selectedAnswer'),
           ],
         ),
       ),
