@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lokaverkefni/questions/quiz_screen.dart';
-import 'package:lokaverkefni/main.dart';
 
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: QuizScreen(),
+      home: const QuizScreen(),
     );
   }
 }

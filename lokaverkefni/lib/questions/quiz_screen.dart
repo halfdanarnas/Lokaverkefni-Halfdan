@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:lokaverkefni/main.dart';
 
 class QuizScreen extends StatefulWidget {
+  const QuizScreen({super.key});
+
   @override
   _QuizScreenState createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  String _selectedAnswer = ''; // Initialize here instead of using 'late'
+  String _selectedAnswer = '';
   late AudioPlayer _audioPlayer;
   late String _currentQuestionSound;
 
-  // Define quiz data with questions, options, correct answers, and sound file paths
   final List<Map<String, dynamic>> _quizData = [
     {
       'question': 'Hvaða tónbil er þetta?',
       'options': ['hrein fimmund', 'hrein ferund', 'lítil tvíund', 'stór tvíund'],
       'correctAnswer': 'hrein ferund',
-      'sound': 'assets/audio/test_sound.mp3', // Example sound file path
+      'sound': 'assets/audio/test_sound.mp3',
     },
-    // Add more questions here
+    { 'question': 'Hvaða tónbil er þetta?',
+      'options': ['hrein fimmund', 'hrein ferund', 'lítil tvíund', 'stór tvíund'],
+      'correctAnswer': 'hrein fimmund',
+      'sound': 'assets/audio/test_sound.mp3',
+      },
   ];
 
   @override
@@ -39,22 +43,35 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('lærðu tónbil'),
+        title: const Text('lærðu tónbil'),
+        titleSpacing: 400,
+        
+        
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                _playQuestionSound(_quizData[0]['sound']);
-                _showQuestion(_quizData[0]);
-              },
-              child: Text('Show Question'),
-            ),
-            // Display selected answer
-            if (_selectedAnswer.isNotEmpty) Text('Selected Answer: $_selectedAnswer'),
-          ],
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assetts/images/pngegg.png'), 
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+
+            
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                 
+                  _showQuestion(_quizData[0]);
+                },
+                child: const Text('Show Question'),
+              ),
+              if (_selectedAnswer.isNotEmpty) Text('Selected Answer: $_selectedAnswer'),
+            ],
+          ),
         ),
       ),
     );
@@ -72,13 +89,13 @@ class _QuizScreenState extends State<QuizScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Display answer options as buttons
               ...((questionData['options'] as List<String>).map((option) {
                 return ElevatedButton(
                   onPressed: () {
                     setState(() {
                       _selectedAnswer = option;
-                      Navigator.of(context).pop(); // Close the dialog
+                      _playQuestionSound(_currentQuestionSound);
+                      Navigator.of(context).pop();
                     });
                   },
                   child: Text(option),
