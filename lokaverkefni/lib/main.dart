@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lokaverkefni/questions/quiz_screen.dart';
+import 'package:lokaverkefni/quiz.dart';
 
 
 void main() {
@@ -21,5 +22,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
