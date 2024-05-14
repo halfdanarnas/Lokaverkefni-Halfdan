@@ -39,22 +39,36 @@ class _QuizScreenState extends State<QuizScreen> {
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('lærðu tónbil'),
-        titleSpacing: 400,
-        
-        
+ @override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 8, 63, 108), // Add your desired background color here
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: const Text(
+          'lærðu tónbil',
+          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)), // Customize text color if needed
+        ),
       ),
-      body: Container(
+      titleSpacing: 400,
+        
+        
+        
+     ),
+    body: DecoratedBox(
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 8, 63, 108), // Add your desired background color here
+      ),
+      child: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assetts/images/pngegg.png'), 
             alignment: Alignment.center,
             fit: BoxFit.contain,
-
             
           ),
         ),
@@ -64,7 +78,7 @@ class _QuizScreenState extends State<QuizScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                 
+                  _playQuestionSound(_quizData[0]['sound']);
                   _showQuestion(_quizData[0]);
                 },
                 child: const Text('Show Question'),
@@ -74,6 +88,7 @@ class _QuizScreenState extends State<QuizScreen> {
           ),
         ),
       ),
+    ),
     );
   }
 
