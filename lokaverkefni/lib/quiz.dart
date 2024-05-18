@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
-
+import 'package:audioplayers/audioplayers.dart' show AudioPlayer;
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
 
